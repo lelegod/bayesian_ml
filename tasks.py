@@ -10,3 +10,4 @@ def install(c: Context):
 def create_env(c: Context):
     """Create a conda environment."""
     c.run("conda create -n bayesian_ml python=3.12 --yes", echo=True)
+    c.run("pip install -r requirements.txt", echo=True)
