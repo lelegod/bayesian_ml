@@ -14,3 +14,15 @@ venv/
 .vscode/
 data/
 notebooks/.ipynb_checkpoints
+
+# LaTeX generated files
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.dvi
+*.bbl
+*.blg
