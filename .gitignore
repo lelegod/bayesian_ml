@@ -26,3 +26,4 @@ notebooks/.ipynb_checkpoints
 *.dvi
 *.bbl
 *.blg
+*.pdf
