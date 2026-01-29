@@ -1,11 +1,10 @@
 import os
-from invoke import Context, task
 import shutil
+from invoke import Context, task
 
 WINDOWS = os.name == "nt"
 PYTHON_VERSION = "3.12"
 COURSE_NAME = "bayesian_ml"
-SPECIAL_PACKAGES = ["jax[cuda13]" if shutil.which("nvidia-smi") else "jax"]
 
 @task
 def install(c: Context):
