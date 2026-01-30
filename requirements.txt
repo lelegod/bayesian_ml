@@ -4,5 +4,4 @@ numpy
 pandas
 matplotlib
 scipy
-# jax is installed in via invoke task
 seaborn
