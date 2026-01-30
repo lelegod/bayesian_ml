@@ -36,3 +36,7 @@ def create_env(c: Context, path=None):
         c.run(f"conda run -n {COURSE_NAME} pip install -r requirements.txt", echo=True, pty=not WINDOWS)
         if SPECIAL_PACKAGES:
             c.run(f"conda run -n {COURSE_NAME} pip install {' '.join(SPECIAL_PACKAGES)}", echo=True, pty=not WINDOWS)
+
+@task
+def test(c):
+    c.run(ls)
