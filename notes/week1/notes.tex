@@ -1,0 +1,29 @@
+Bayesian machine learning: take all sets of model paramter consistent with the data into account.
+All variables are represented using probability distribtions.
+
+Posterior distributions $p(\textbf{w}|\textbf{y})$ measures how much weight to assign to each parameter set.
+
+For finite parameter sets:
+\begin{equation}
+    y^* = \sum_{i=1}^{M} f(\textbf{x}^*|\textbf{w}_i)p(\textbf{w}_i|\textbf{y})
+\end{equation}
+
+For infinitely many parameter sets:
+\begin{equation}
+    y^* = \int f(\textbf{x}^*|\textbf{w})p(\textbf{w}|\textbf{y}) d\textbf{w}
+\end{equation}
+
+Marginalization is the process of taking the uncertainty about the parameters into account.
+
+Two sources of uncertainty:
+\begin{enumerate}
+    \item Epistemic uncertainty: due to lack of knowledge (limited data set). Also called \textbf{reducible} uncertainty.
+    \item Aleatoric uncertainty: refers to inherent randomness (measurement noise). Also called \textbf{irreducible} uncertainty.
+\end{enumerate}
+
+Bayes' rule:
+\begin{equation}
+    p(\textbf{w}|\textbf{y}) = \frac{p(\textbf{y}|\textbf{w})p(\textbf{w})}{p(\textbf{y})}
+\end{equation}
+
+Likelihood $p(\textbf{y}|\textbf{w})$
