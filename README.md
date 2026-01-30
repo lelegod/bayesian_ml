@@ -1,6 +1,6 @@
-# Bayesian ML
+# Bayesian Machine Learning
 
-Notes and solutions for the **Bayesian ML** course.
+Notes and solutions for the **Bayesian Machine Learning** course.
 
 **Author:** Kyle Nathan Yahya
 
