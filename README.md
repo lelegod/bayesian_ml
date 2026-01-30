@@ -1,6 +1,6 @@
-# Bayesian ML
+# Bayesian Machine Learning
 
-Notes and solutions for the **Bayesian ML** course.
+Notes and solutions for the **Bayesian Machine Learning** course.
 
 **Author:** Kyle Nathan Yahya
 
@@ -51,3 +51,5 @@ Install the **LaTeX Workshop** extension by James Yu.
 - `notes/`: LaTeX notes and weekly summaries.
 - `tasks.py`: Automation scripts.
 - `requirements.txt`: Python dependencies.
+
+This is a test

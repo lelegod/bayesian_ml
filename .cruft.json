@@ -1,15 +1,15 @@
 {
   "template": "https://github.com/lelegod/cookiecutter-course-template.git",
-  "commit": "8e24266b04b3de05c371d1ee97f983b85418606c",
+  "commit": "08a0ec5f3db6a0819aa8e0c649b5a813e9978e51",
   "checkout": null,
   "context": {
     "cookiecutter": {
-      "project_name": "bayesian ml",
-      "project_slug": "bayesian_ml",
+      "project_name": "Bayesian Machine Learning",
+      "project_slug": "bayesian_machine_learning",
       "author_name": "Kyle Nathan Yahya",
       "python_version": "3.12",
       "_template": "https://github.com/lelegod/cookiecutter-course-template.git",
-      "_commit": "8e24266b04b3de05c371d1ee97f983b85418606c"
+      "_commit": "08a0ec5f3db6a0819aa8e0c649b5a813e9978e51"
     }
   },
   "directory": null
