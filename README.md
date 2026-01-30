@@ -51,5 +51,3 @@ Install the **LaTeX Workshop** extension by James Yu.
 - `notes/`: LaTeX notes and weekly summaries.
 - `tasks.py`: Automation scripts.
 - `requirements.txt`: Python dependencies.
-
-This is a test
