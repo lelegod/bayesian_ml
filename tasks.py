@@ -32,7 +32,7 @@ def create_env(c: Context, path=None):
         c.run(f'"{pip_exe}" install -r requirements.txt', echo=True, pty=not WINDOWS)
         c.run(f'"{pip_exe}" install -r requirements_project.txt', echo=True, pty=not WINDOWS)
         if SPECIAL_PACKAGES:
-            c.run(f'"{pip_exe}" install {' '.join(SPECIAL_PACKAGES)}', echo=True, pty=not WINDOWS)
+            c.run(f'"{pip_exe}" install {" ".join(SPECIAL_PACKAGES)}', echo=True, pty=not WINDOWS)
     else:
         c.run(f'conda create -n {COURSE_NAME} python={PYTHON_VERSION} pip --no-default-packages --yes', echo=True, pty=not WINDOWS)
         c.run(f"conda run -n {COURSE_NAME} pip install -r requirements.txt", echo=True, pty=not WINDOWS)
@@ -54,6 +54,8 @@ def hpc_get(c: Context, week_num: int, file_name: str):
     hpc_path = f"Documents/{COURSE_NAME}/week{week_num}/{file_name}"
     if not WINDOWS:
         local_path = f"/Users/kyleelyk/Documents/DTU/SEM2/{COURSE_NAME}/week{week_num}/{file_name}"
+    else:
+        local_path = f"week{week_num}/{file_name}"
     c.run(f"scp s252786@login.hpc.dtu.dk:{hpc_path} {local_path}", echo=True, pty=not WINDOWS)
 
 @task
@@ -62,11 +64,16 @@ def hpc_post(c: Context, week_num: int, file_name: str):
     hpc_path = f"Documents/{COURSE_NAME}/week{week_num}/{file_name}"
     if not WINDOWS:
         local_path = f"/Users/kyleelyk/Documents/DTU/SEM2/{COURSE_NAME}/week{week_num}/{file_name}"
+    else:
+        local_path = f"week{week_num}/{file_name}"
     c.run(f"scp {local_path} s252786@login.hpc.dtu.dk:{hpc_path}", echo=True, pty=not WINDOWS)
 
-@task(help={'folder': 'Folder path to list files from (e.g., week1/question_scripts)'})
-def run_file(c: Context, folder: str):
-    """List files in a folder and run the selected one."""
+@task(help={
+    'folder': 'Folder path to list files from (e.g., week1/question_scripts)',
+    'args': 'Optional arguments to pass to the Python file (e.g., "--flag value arg1 arg2")'
+})
+def run_file(c: Context, folder: str, args: str = ""):
+    """List files in a folder and run the selected one with optional arguments."""
     if not os.path.isabs(folder):
         folder_path = os.path.join(os.getcwd(), folder)
     else:
@@ -117,7 +124,10 @@ def run_file(c: Context, folder: str):
 
     file_path = os.path.join(folder_path, selected_file)
     
+    # Append arguments if provided
+    cmd_args = f" {args}" if args else ""
+    
     if os.environ.get("CONDA_DEFAULT_ENV") == COURSE_NAME:
-        c.run(f"python {file_path}", echo=True, pty=not WINDOWS)
+        c.run(f"python -u {file_path}{cmd_args}", echo=True, pty=not WINDOWS)
     else:
-        c.run(f'conda run -n {COURSE_NAME} python "{file_path}"', echo=True, pty=not WINDOWS)
+        c.run(f'conda run --no-capture-output -n {COURSE_NAME} python -u "{file_path}"{cmd_args}', echo=True, pty=not WINDOWS)
